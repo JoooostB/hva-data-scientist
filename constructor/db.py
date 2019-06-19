@@ -17,7 +17,3 @@ class Collection:
         json_data = json.loads(data.to_json(orient='records'))
         self.conn.delete_many({ })    # Clear collection using an empty filter.
         self.conn.insert_many(json_data)
-
-
-coll = Collection('/Users/joost/PycharmProjects/hva-data-scientist/hotel-reviews.csv', 'hotel-reviews')
-coll.fill()
