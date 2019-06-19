@@ -15,7 +15,7 @@ Assignment goals:
   * Filter: filter out interesting items or filter in interesting items
   * Details: On demand; select an item or group and get relevant information accordingly
 2. To simulate big data and RAM problems, additional libraries are used
-  * In case of R , for instance the library FFBASE 
+  * In case of R , for instance the library FFBASE yv
   * In case of Python, for instance the library PyTable
 (After some initial selection cleaning the result should be written away as a Review_pos.csv and Review_neg.csv)
 3.	All of the  dataset is stored in a NOSQL database, for instance MONGODB. A live connection to filter data during the process of running the script should be implemented:
