@@ -5,6 +5,6 @@ def commit(file):
     collection = Collection(file, 'balanced-reviews')
 
 
-def create_balanced_csv():
+def balance_collection():
     pass
 
