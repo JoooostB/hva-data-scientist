@@ -12,6 +12,7 @@ services:
       - ./data/db:/data/db
     command: mongod --smallfiles --logpath=/dev/null
   adminmongo:
+      container_name: adminmongo
       image: mrvautin/adminmongo
       links: ['mongodb:mongodb']
       ports: ['1234:1234']
@@ -23,3 +24,10 @@ services:
         - DB_PASSWORD=jupyter
         - DB_HOST=mongodb
         - DB_NAME=assignment-2
+  jupyter:
+    container_name: jupyter
+    image: jupyter/datascience-notebook:latest
+    ports: ['8888:8888']
+    command: start.sh jupyter notebook --NotebookApp.token=''
+    volumes:
+      - ./:/home/jovyan/work
