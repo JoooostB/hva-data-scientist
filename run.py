@@ -1,5 +1,6 @@
 from constructor.db import Collection
 from constructor.table import Table
+import pandas as pd
 
 review_table = Table('hotel-reviews.csv', './data/table.h5', 'hotel_reviews')
 review_table.store()
