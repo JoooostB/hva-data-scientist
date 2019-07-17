@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 class Collection:
     def __init__(self, df, collection):
-        self.client = MongoClient('mongodb://mongodb:27017')  # Init mongoclient
+        self.client = MongoClient('mongodb://localhost:27017')  # Init mongoclient
         self.db = self.client['assignment-2']  # Assign db name
         self.df = df
         self.collection = collection
