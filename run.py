@@ -4,22 +4,22 @@ import pandas as pd
 
 review_table = Table('hotel-reviews.csv', './data/table.h5', 'hotel_reviews')
 review_table.store()
+
 positive = review_table.query('Reviewer_Score > 5.4')
-#positive.rename(columns={'Positive_Review': 'Review_Text'})
-print(positive)
-positive.drop(['Negative_Review'])
 positive['Sentiment'] = 1
-
-
 negative = review_table.query('Reviewer_Score < 5.5')
-negative.rename(columns={'Negative_Review': 'Review_Text'})
-negative.drop(['Positive_Review'])
 negative['Sentiment'] = 0
+
+positive.rename(columns={'Positive_Review': 'Review_Text'}, inplace=True)
+positive.drop("Negative_Review", axis=1)
+negative.rename(columns={'Negative_Review': 'Review_Text'}, inplace=True)
+negative.drop("Positive_Review", axis=1)
 
 positive.to_csv(r'./data/Review_pos.csv', index=None, header=True)
 negative.to_csv(r'./data/Review_neg.csv', index=None, header=True)
 
-df = pd.concat([positive, negative])    # Combine dataframes after adding sentiment
+df = pd.concat([positive, negative], sort=False)
+
 Collection(df, 'hotel-reviews').fill()    # Fill mongo with new df
 Collection(positive[['Review_Text', 'Sentiment']].sample(n=10000), 'pos').fill()
 Collection(negative[['Review_Text', 'Sentiment']].sample(n=10000), 'neg').fill()
