@@ -9,7 +9,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./data/db:/data/db
+      - dbdata:/data/db
     command: mongod --smallfiles --logpath=/dev/null
   adminmongo:
       container_name: adminmongo
@@ -31,3 +31,6 @@ services:
     command: start.sh jupyter notebook --NotebookApp.token=''
     volumes:
       - ./:/home/jovyan/work
+  
+volumes:
+  dbdata:
