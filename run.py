@@ -1,15 +1,43 @@
-from flask import Flask, render_template
-from pymongo import MongoClient
+from flask import Flask, render_template, jsonify, request
+from flask_pymongo import PyMongo, MongoClient
 import json
 from bson import json_util
+from datetime import datetime
 
 app = Flask(__name__)
 
+client = MongoClient("mongodb://localhost")
+database = client["assignment-2"]
+collection = database["hotel-reviews"]
+
 projection = {"Reviewer_Score": True, "lat": True, "lng": True}
 # Count amount of reviews per date
-date_count = [
-    {"$group": {"_id": "$Review_Date", "count": {"$sum": 1 } } }
-]
+date_count = [{"$group": {"_id": "$Review_Date", "count": {"$sum": 1}}}]
+
+@app.route("/tutorial")
+def tutorial():
+    #result = collection.find_one({'Hotel_Name': 'Hotel Arena'})
+    return render_template("tutorial.html")
+
+
+@app.route("/query")
+def query():
+    data = collection.aggregate(date_count)
+    values = []
+    try:
+        for value in data:
+            values.append(value)
+    finally:
+        print(values)
+        #values = sorted(values, key=lambda x: datetime.strptime(x['_id'], "%m/%d/%Y"))
+        print(values)
+        labels = [y['_id'] for y in values]
+        values = [y['count'] for y in values]
+        #values = json.dumps(values, default=json_util.default)
+
+    id = request.args.get('id')
+    result = collection.find_one({'name': id})
+    return render_template("tutorial.html", labels=json.dumps(labels), values=json.dumps(values))
 
 
 @app.route("/")
@@ -29,12 +57,6 @@ def run():
         print(str(data))
         connection.close()
     return render_template("index.html", data=data)
-
-
-@app.route("/pie")
-def pie():
-    labels = 1
-    values = 2
 
 
 if __name__ == "__main__":
