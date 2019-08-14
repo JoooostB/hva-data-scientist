@@ -26,8 +26,8 @@ services:
         - DB_NAME=assignment-2
   jupyter:
     container_name: jupyter
-    image: jupyter/datascience-notebook:latest
+    image: jupyter:pyviz
     ports: ['8888:8888']
-    command: start.sh jupyter notebook --NotebookApp.token=''
+    #command: start.sh jupyter notebook --NotebookApp.token=''
     volumes:
       - ./:/home/jovyan/work
