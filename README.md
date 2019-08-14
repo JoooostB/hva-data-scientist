@@ -1,5 +1,12 @@
 ![Logo](http://www.hva.nl/webfiles/1524744682263/img/logo.svg "Hogeschool van Amsterdam")
 # Data Engineer & Data Scientist 2018
+## Using the application
+To start the appication we'll use the bokeh executable so make sure this is installed in your Python3 environment. Enter the bokeh serve command followed with show and the directory that bokeh uses. 
+
+```python
+bokeh serve --show bokeh_app
+```
+
 ## Individual Assignment II
 In this assignment we’ll use the same dataset as before. Simulating processing and analysing of a Big Data set on your machine can be done by using several libraries. The use of these libraries and their purposes will be the topic of each lesson during this block. Main goal of the second assignment can be stated as:
 *“Demonstrating how machine learning can be done in a Big Data Environment”*
