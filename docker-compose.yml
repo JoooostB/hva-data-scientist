@@ -26,7 +26,7 @@ services:
         - DB_NAME=assignment-2
   jupyter:
     container_name: jupyter
-    image: jupyter/datascience-notebook:latest
+    image: jupyter/all-spark-notebook:latest
     ports: ['8888:8888']
     command: start.sh jupyter notebook --NotebookApp.token=''
     volumes:
