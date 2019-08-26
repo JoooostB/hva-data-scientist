@@ -26,6 +26,6 @@ def input_tab():
     output_file("bokeh_app/output/text_input.html")
     text_input = TextAreaInput(value="Voer je review hier in :)", rows=6, title="Sentiment tester")
     text_input.on_change("value", input_handler)
-    tab = Panel(child=column(text_input, toggle), title='Text Input')
+    tab = Panel(child=column(text_input, toggle), title='Tester')
     return tab
 
