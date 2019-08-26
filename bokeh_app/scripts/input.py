@@ -24,7 +24,7 @@ def input_handler(attr, old, new):
 # Deze functie genereert een textinput veld en roept de input_handler aan zodra de value van het tekstveld is veranderd.
 def input_tab():
     output_file("bokeh_app/output/text_input.html")
-    text_input = TextAreaInput(value="Voer je review hier in :)", rows=6, title="Label:")
+    text_input = TextAreaInput(value="Voer je review hier in :)", rows=6, title="Sentiment tester")
     text_input.on_change("value", input_handler)
     tab = Panel(child=column(text_input, toggle), title='Text Input')
     return tab

@@ -10,7 +10,7 @@ def geo_tab(df):
     api_key = "AIzaSyAhJoQsJr9IdsbXthpM4i84HsYvJtXxLXc"
 
     # Output backend WebGL for better performance.
-    p = gmap(api_key, map_options, title="Austin", output_backend="webgl")
+    p = gmap(api_key, map_options, title="Review Locations", output_backend="webgl")
 
     data = dict(lat=df_sample['lat'],
                 lon=df_sample['lng'])
