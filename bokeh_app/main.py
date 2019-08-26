@@ -9,6 +9,7 @@ from os.path import dirname, join
 from bokeh.io import curdoc
 from bokeh.models.widgets import Tabs
 
+from scripts.count import count_tab
 from scripts.sentiment import sentiment_tab
 from scripts.geo import geo_tab
 from scripts.input import input_tab
@@ -45,11 +46,12 @@ def iterator2dataframe(iterator, chunk_size: int):
 df = iterator2dataframe(list(coll.find()), 25000)
 df = df.drop(columns="_id")
 
-tab1 = sentiment_tab(df)
-tab2 = geo_tab(df)
-tab3 = input_tab()
+tab1 = count_tab(df)
+tab2 = sentiment_tab(df)
+tab3 = geo_tab(df)
+tab4 = input_tab()
 
-tabs = Tabs(tabs=[tab1, tab2, tab3])
+tabs = Tabs(tabs=[tab1, tab2, tab3, tab4])
 curdoc().add_root(tabs)
 
 
