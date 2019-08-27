@@ -25,10 +25,10 @@ class Table:
         store.close()
         return store
 
-
     def query(self, query):
         read = pd.HDFStore(self.hdf_file, mode='r').get(self.hdf_key)
         return read.query(query)
 
-    def add_sentiment(self, df, value):
+    @staticmethod
+    def add_sentiment(df, value):
         df['Sentiment'] = value

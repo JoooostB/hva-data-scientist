@@ -14,7 +14,6 @@ from scripts.sentiment import sentiment_tab
 from scripts.geo import geo_tab
 from scripts.input import input_tab
 
-
 # Make Database Connection
 client = pymongo.MongoClient('localhost', 27017)
 db = client['assignment-2']
@@ -53,5 +52,4 @@ tab4 = input_tab()
 
 tabs = Tabs(tabs=[tab1, tab2, tab3, tab4])
 curdoc().add_root(tabs)
-
 
