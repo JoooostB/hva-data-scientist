@@ -17,7 +17,7 @@ class Table:
             except OSError:
                 pass
         store = pd.HDFStore(self.hdf_file)
-        for chunk in pd.read_csv(self.csv_file, chunksize=500000):
+        for chunk in pd.read_csv(self.csv_file, chunksize=25000):
             # don't index data columns in each iteration
             store.append(self.hdf_key, chunk, data_columns=self.df_cols_to_index, index=False)
         # index data columns in HDFStore
