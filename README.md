@@ -1,3 +1,4 @@
+> :warning: **This repo is not maintained!**: Dependencies may be outdated or not compatible anymore!
 ![Logo](http://www.hva.nl/webfiles/1524744682263/img/logo.svg "Hogeschool van Amsterdam")
 # Data Engineer & Data Scientist 2018
 ## Using the application
